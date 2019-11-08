@@ -1,0 +1,172 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require simple_calendar
+ *= require_tree .
+ *= require_self
+ */
+@import "bootstrap";
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+body{
+  background-color: #EEEEEE;
+}
+
+
+.bg {
+  background: image-url('login_background');
+  background-size: cover;
+
+}
+
+.login-form{
+  padding-top: 50px;
+  height: 600px;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.login-form-content{
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
+  color: white;
+}
+
+/*サイドバー*/
+.container{
+background-color: white;
+}
+
+.sidebar{
+  height: 600px;
+
+}
+/*メニューバー*/
+.nav a {
+  color: white;
+}
+/*アイコン*/
+.fa-burn {
+  color: red
+}
+
+
+.home-header{
+  background: image-url('login_background');
+  height: 200px;
+}
+
+.mod {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+
+
+}
+
+.modal-inner {
+  position: absolute;
+  top: 8%;
+  right: 0;
+  left: 0;
+  width: 480px;
+  padding-bottom: 60px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 8px;
+}
+
+.modal-header {
+  height: 8px;
+  width: 100%;
+  margin-bottom: 60px;
+  border-radius: 8px 8px 0 0;
+
+}
+
+.modal-introduction p {
+  color: #5876a3;
+  width: 384px;
+  line-height: 32px;
+
+  margin: 36px auto 40px;
+}
+
+.modal-close-btn {
+  font-size: 13px;
+    width: 100%;
+    height: 50px;
+  border: 0;
+  background-color: #f0f4f9;
+
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  color: #8491a5;
+  background-color: #ccd9ea;
+  transition: 0.3s ease-in-out;
+}
+
+
+.card {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin: 10px 80px 40px 80px;
+  background-color: #002200;
+
+}
+
+.card-title {
+  margin: 0;
+
+  color: white;
+
+}
+
+.card-int{
+
+    height:auto;
+}
+
+.card:hover{
+    color: #000; /* 文字色を白にする */
+    background-color: #c9c9c9; /* 背景色をグレー（#c9c9c9）にする */
+    text-decoration: none; /* リンクに出てくる下線を無効にする*/
+}
+
+.card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.intro-section{
+  text-align: center;
+  background-color: #EEEEEE;
+  margin-top: 20px;
+}
+
+.comment-search{
+
+margin: 10px 80px 40px 80px;
+
+}
+
+footer{
+  background-color: green;
+}

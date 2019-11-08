@@ -1,0 +1,27 @@
+.row
+  .col-2
+    = render 'shared/sidebar'
+
+  .col-8
+    .container
+      = image_tag @user.gravatar_url
+      =@user.name
+      hr
+
+
+
+      = link_to '編集', edit_user_path, class: 'btn btn-primary mr-3'
+      = link_to '退会', @user, method: :delete,data: { confirm: "退会します。よろしいですか？" }, class: 'btn btn-danger'
+
+
+
+      h３ あなたのタスク
+      -@tasks.each do |task|
+        .border.border-primary.mt-4.mb-1.ml-2.mr-2.rounded
+          =task.name
+          hr
+          =task.description
+        br
+
+
+      hr

@@ -1,0 +1,20 @@
+.container
+  - if @user.errors.present?
+    ul#error_explanation
+      - user.errors.full_messages.each do |message|
+        li= message
+
+  = form_for(@user) do |f|
+    .form-group
+      = f.label :name, 'お名前'
+      = f.text_field :name, class: 'form-control'
+    .form-group
+      = f.label :email, 'メールアドレス'
+      = f.email_field :email, class: 'form-control'
+    .form-group
+      = f.label :password, 'パスワード'
+      = f.password_field :password, class: 'form-control'
+    .form-group
+      = f.label :password_confirmation, 'パスワード（もう１度ご入力ください）'
+      = f.password_field :password_confirmation, class: 'form-control'
+    = f.submit '登録する', class: 'btn btn-primary btn-block'

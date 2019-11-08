@@ -1,0 +1,15 @@
+.container
+  .sidebar
+    p　マイタスク
+    .sidebar-content
+      p あなたのタスク数
+      = icon 'far', 'smile'
+      =@mytasks.count
+    .sidebar-content
+      p 本日までのタスク
+      = icon 'far', 'grin-beam-sweat'
+      =@todayMyTasks.count
+    .sidebar-content
+      p 期限切れのタスク
+      = icon 'far', 'dizzy'
+      =@pastMyTasks.count
