@@ -22,6 +22,14 @@ body{
   background-color: #EEEEEE;
 }
 
+h5 {
+  border-bottom: double 5px #FFC778;
+}
+
+h4 {
+  background: #FFCC66;/*背景色*/
+
+}
 
 .bg {
   background: image-url('login_background');
@@ -49,7 +57,7 @@ background-color: white;
 
 .sidebar{
   height: 600px;
-
+  background-color: white;
 }
 /*メニューバー*/
 .nav a {
@@ -57,6 +65,18 @@ background-color: white;
 }
 /*アイコン*/
 .fa-burn {
+  color: red
+}
+
+.fa-smile {
+  color: lime
+}
+
+.fa-grin-beam-sweat{
+  color: blue
+}
+
+.fa-dizzy {
   color: red
 }
 
@@ -129,7 +149,7 @@ background-color: white;
   justify-content: space-between;
 
   margin: 10px 80px 40px 80px;
-  background-color: #002200;
+  background-color: #DDFFFF;
 
 }
 
@@ -169,4 +189,44 @@ margin: 10px 80px 40px 80px;
 
 footer{
   background-color: green;
+}
+
+
+
+/*ツールチップ*/
+
+.tooltip2{
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+.tooltip2 p{
+    margin:0;
+    padding:0;
+}
+.description2 {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    font-size: 12px;
+    line-height: 1.6em;
+    color: #fff;
+    border-radius: 5px;
+    background: #000;
+    width: 100px;
+}
+.description2:before {
+    content: "";
+    position: absolute;
+    top: 0%;
+    right: 95%;
+    border: 15px solid transparent;
+    border-top: 15px solid #000;
+    margin-left: -15px;
+    transform: rotateZ(90deg);
+}
+.tooltip2:hover .description2{
+    display: inline-block;
+    top: 0px;
+    left: 50px;
 }

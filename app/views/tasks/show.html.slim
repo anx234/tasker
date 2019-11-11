@@ -7,18 +7,21 @@
 
   .col-8
     .container
-      h2 タスク詳細
-      .task-info.border.border-primary.mt-4.mb-1.ml-2.mr-2.rounded
-        table.table.table-hover
-          thead.thead-default
+      .task.pt-4
+        h2 タスク詳細
+        .task-info.border.mt-4.mb-4.ml-2.mr-2.rounded
+          table.table.table-hover
             tr
               th= Task.human_attribute_name(:name)
               td= @task.name
-          tbody
+            tr
+              th= "投稿者"
+              td= link_to @task.user.name, "/users/#{@task.user.id}", class: 'nav-link'
             tr
               th= Task.human_attribute_name(:description)
               td= @task.description
-        hr
+
+      -if current_user.id==@task.user.id
         = link_to '編集', edit_task_path, class: 'btn btn-primary mr-3'
         = link_to '削除', @task, method: :delete,data: { confirm: "タスク「#{@task.name}」を削除します。よろしいですか？" }, class: 'btn btn-danger'
 
@@ -29,7 +32,7 @@
       h2 コメント一覧
       - @comments.each do |comment|
         div
-          = comment.user.name
+          = link_to "投稿者：#{comment.user.name}さん", "/users/#{comment.user.id}", class: 'nav-link'
           = comment.content
           hr/
 

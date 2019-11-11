@@ -13,6 +13,9 @@ def show
   @user = User.find(params[:id])
   @tasks=@user.tasks
   puts @tasks.count
+  @isFollow = current_user.following? @user
+  puts "テスト"
+  puts @user.followers[0].id
 end
 
   def edit
@@ -24,7 +27,10 @@ end
   if @user.save # => Validation
     # Sucess
     flash[:success] = "Welcome to the Sample App!"
-    redirect_to  login_path,notice:'redirectに成功しました'
+    UserMailer.account_activation(@user).deliver_now
+    flash[:info] = "Please check your email to activate your account."
+    redirect_to root_url
+    #redirect_to  login_path,notice:'redirectに成功しました'
 
     # GET "/users/#{@user.id}" => show
   else
@@ -32,6 +38,42 @@ end
     render 'new'
   end
   end
+
+  def follow
+
+      @user = User.find(params[:user_id])
+      current_user.follow(@user)
+      @isFollow = current_user.following? @user
+      #render json: @isFollow
+
+      followData = {isFollow: @isFollow, followers: @user.followers_count}
+      render :json => followData
+      #redirect_to user_path(@user)
+  end
+#フォローする
+
+  def unfollow
+      @user = User.find(params[:user_id])
+      current_user.stop_following(@user)
+      @isFollow = current_user.following? @user
+
+      #render json: @isFollow
+      followData = {isFollow: @isFollow, followers: @user.followers_count}
+      render :json => followData
+      #redirect_to user_path(@user)
+  end
+#フォローを外す
+
+
+  def follow_list
+    @user = User.find(params[:user_id])
+  end
+#フォローしてる人の一覧ページ
+
+  def follower_list
+    @user = User.find(params[:user_id])
+  end
+
 
   private
 

@@ -14,6 +14,10 @@
       = link_to '退会', @user, method: :delete,data: { confirm: "退会します。よろしいですか？" }, class: 'btn btn-danger'
 
 
+      = react_component('FollowButton',user: @user,'current_user': current_user,'isFollow': @isFollow, 'follow_count': @user.follow_count, 'follower_count': @user.followers_count,'followers2': @user.followers)
+
+
+
 
       h３ あなたのタスク
       -@tasks.each do |task|
