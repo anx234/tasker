@@ -79,7 +79,13 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
-
+  config.action_mailer.raise_delivery_errors = false
+   config.action_mailer.delivery_method = :smtp
+   config.action_mailer.smtp_settings = {
+   address: "navcrk5@gmail.com",
+   port: 2525, # 8025, 587 and 25 can also be used.
+   domain: "gmail.com",
+  }
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
