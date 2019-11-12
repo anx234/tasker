@@ -37,6 +37,10 @@ h4 {
 
 }
 
+#error_explanation{
+  color: red;
+}
+
 .login-form{
   padding-top: 50px;
   height: 600px;
@@ -229,4 +233,39 @@ footer{
     display: inline-block;
     top: 0px;
     left: 50px;
+}
+
+.follow{
+  display: flex;
+  flex-direction: row;
+
+}
+
+.follow-count{
+
+  padding: 0px 10px 5px 0px;
+  margin: 5px　10px 5px 10px;
+  color: blue;
+
+
+}
+
+.follow-count:hover{
+color: red;
+
+}
+
+.follow-list__name{
+  margin-right: 10px;
+}
+
+.follow-list{
+margin: 2px;
+}
+
+.follow-list a{
+  float: left;
+
+  margin-right: 10px;
+
 }

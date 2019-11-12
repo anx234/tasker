@@ -14,18 +14,38 @@ def show
   @tasks=@user.tasks
   puts @tasks.count
   @isFollow = current_user.following? @user
-  puts "テスト"
-  puts @user.followers[0].id
+  if !@user.image.attached?
+  @user.image.attach(io: File.open("public/images/card1.jpg"), filename: "card1.jpg", content_type: "image/jpg")
+  end
+  @isMe=false
+  if @user.id==current_user.id
+    @isMe=true
+  else
+    @isMe=false
+  end
+  puts @isMe
+
 end
 
   def edit
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+    redirect_to @user, notice: "タスク「#{@user.name}」を更新しました。"
+    else
+    render :edit
+    end
+  end
+
   def create
     @user = User.new(user_params)
+
   if @user.save # => Validation
     # Sucess
+
     flash[:success] = "Welcome to the Sample App!"
     UserMailer.account_activation(@user).deliver_now
     flash[:info] = "Please check your email to activate your account."
@@ -46,7 +66,7 @@ end
       @isFollow = current_user.following? @user
       #render json: @isFollow
 
-      followData = {isFollow: @isFollow, followers: @user.followers_count}
+      followData = {isFollow: @isFollow, followers: @user.followers, follows: @user.all_following}
       render :json => followData
       #redirect_to user_path(@user)
   end
@@ -58,7 +78,7 @@ end
       @isFollow = current_user.following? @user
 
       #render json: @isFollow
-      followData = {isFollow: @isFollow, followers: @user.followers_count}
+      followData = {isFollow: @isFollow, followers: @user.followers, follows: @user.all_following}
       render :json => followData
       #redirect_to user_path(@user)
   end
@@ -78,7 +98,7 @@ end
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image, :greeting)
   end
 
 
