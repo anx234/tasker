@@ -42,6 +42,7 @@ end
 
   def create
     @user = User.new(user_params)
+      @user.image.attach(io: File.open("public/images/card1.jpg"), filename: "card1.jpg", content_type: "image/jpg")
 
   if @user.save # => Validation
     # Sucess
