@@ -6,7 +6,8 @@
     .container
       .row
         .col-6
-          = image_tag @user.image.variant(combine_options:{resize:"150x150^",crop:"640x640+0+0",gravity: :center}).processed
+          if @user.image
+            = image_tag @user.image.variant(combine_options:{resize:"150x150^",crop:"640x640+0+0",gravity: :center}).processed
         .col-6
           h2="#{@user.name}さんのページ"
           p=@user.greeting

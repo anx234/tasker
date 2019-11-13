@@ -14,9 +14,7 @@ def show
   @tasks=@user.tasks
   puts @tasks.count
   @isFollow = current_user.following? @user
-  if !@user.image.attached?
-  @user.image.attach(io: File.open("public/images/card1.jpg"), filename: "card1.jpg", content_type: "image/jpg")
-  end
+  
   @isMe=false
   if @user.id==current_user.id
     @isMe=true
