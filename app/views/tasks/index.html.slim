@@ -11,16 +11,7 @@
     .container.pt-4
       h1 みんなのタスク
       =Date.today
-      br
-      =@tasks.count
-      = icon 'fas', 'burn'
-
-      - @todayTasks.each do |todayTask|
-        -if Date.today >= todayTask.limit_time
-          p =todayTask.name
-          p =todayTask.limit_time
-
-
+      
 
       h4
         | タスク検索
@@ -34,6 +25,10 @@
           = f.label :created_at_gteq, '登録日時', class: 'col-sm-2 col-form-label'
           .col-sm-10
             = f.search_field :created_at_gteq, class: 'form-control'
+        .form-group.row
+          = f.label :limit_time_gteq, '期限日', class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.search_field :limit_time_gteq, class: 'form-control'
         .form-group
           = f.submit class: 'btn btn-outline-primary'
 

@@ -1,5 +1,6 @@
 class AccountActivationsController < ApplicationController
   skip_before_action :login_required,:mytask_get
+  
   def edit
      puts "登録"
      user = User.find_by(email: params[:email])

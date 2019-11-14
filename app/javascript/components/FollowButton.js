@@ -1,10 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
-import FollowModal from './FollowModal'
+
 class FollowButton extends React.Component {
-
-
-
 
   constructor(props) {
   super(props);
@@ -13,39 +10,33 @@ class FollowButton extends React.Component {
 
 
     openFollowerModal() {
-    this.setState({isFollowerModalOpen: true});
-    console.log(this.state);
-
+      this.setState({isFollowerModalOpen: true});
+      console.log(this.state);
     }
 
     closeFollowerModal() {
-    this.setState({isFollowerModalOpen: false});
+      this.setState({isFollowerModalOpen: false});
     }
-    openFollowModal() {
-    this.setState({isFollowModalOpen: true});
-    console.log(this.state);
 
+    openFollowModal() {
+      this.setState({isFollowModalOpen: true});
+      console.log(this.state);
     }
 
     closeFollowModal() {
-    this.setState({isFollowModalOpen: false});
+      this.setState({isFollowModalOpen: false});
     }
 
   follow(){
-  //this.setState({isFollow: true});
-  //console.log(this.state);
-
-  $.ajax({
-    type: 'POST', // HTTPのメソッド
-    url: '/users/follow/',// リクエスト先のURL
-    dataType: 'json', // リクエストの種類
-    contentType: 'application/json', // レスポンスの種類
-    data: JSON.stringify({
-      user_id: this.props.user.id
-    }) // 実際に送信するデータ
-  }).done(function(followData){
-        //this.setState(isFollow: data);
-      //
+    $.ajax({
+      type: 'POST', // HTTPのメソッド
+      url: '/users/follow/',// リクエスト先のURL
+      dataType: 'json', // リクエストの種類
+      contentType: 'application/json', // レスポンスの種類
+      data: JSON.stringify({
+        user_id: this.props.user.id
+      }) // 実際に送信するデータ
+    }).done(function(followData){
       this.setState({isFollow: followData.isFollow});
       this.setState({followers: followData.followers});
       this.setState({follows: followData.follows});
@@ -53,138 +44,111 @@ class FollowButton extends React.Component {
         console.log(followData);
         console.log(followers);
     }.bind(this))
-
-
   }
 
   unfollow(){
-  //this.setState({isFollow: false});
-  //console.log(this.state);
-
-  $.ajax({
-    type: 'POST', // HTTPのメソッド
-    url: '/users/unfollow/',// リクエスト先のURL
-    dataType: 'json', // リクエストの種類
-    contentType: 'application/json', // レスポンスの種類
-    data: JSON.stringify({
-      user_id: this.props.user.id
-    }) // 実際に送信するデータ
-  }).done(function(followData){
-        //this.setState(isFollow: data);
-        //this.setState({isFollow: false});
-        this.setState({isFollow: followData.isFollow});
-        this.setState({followers: followData.followers});
-        this.setState({follows: followData.follows});
-      //  this.setState({isFollow: data});
-        console.log(followData);
-        console.log(followers);
-    }.bind(this))
-
+    $.ajax({
+      type: 'POST', // HTTPのメソッド
+      url: '/users/unfollow/',// リクエスト先のURL
+      dataType: 'json', // リクエストの種類
+      contentType: 'application/json', // レスポンスの種類
+      data: JSON.stringify({
+        user_id: this.props.user.id
+      }) // 実際に送信するデータ
+    }).done(function(followData){
+          this.setState({isFollow: followData.isFollow});
+          this.setState({followers: followData.followers});
+          this.setState({follows: followData.follows});
+          console.log(followData);
+          console.log(followers);
+      }.bind(this))
   }
 
   render () {
 
-    const listItems = this.state.followers.map((follower) =>
-
-
-<div className='follow-list'>
-
-      <a href ={'/users/'+follower.id}>{follower.name}</a>
-
-
-      {follower.greeting}
-
+    const followerUser = this.state.followers.map((follower) =>
+      <div className='follow-list'>
+        <a href ={'/users/'+follower.id}>{follower.name}</a>
+        {follower.greeting}
       </div>
+  );
 
+  let modal;
+  if (this.state.isFollowerModalOpen) {
+    modal = (
+      <div className='mod'>
+        <div className='modal-inner'>
+          <h3>フォロワー一覧</h3>
+          <hr/>
+          {followerUser}
 
+          <button
+          className='modal-close-btn'
+          onClick={() => this.closeFollowerModal()}
+          >
+          とじる
+          </button>
+        </div>
+      </div>
     );
-    let modal;
-       if (this.state.isFollowerModalOpen) {
-         modal = (
-           <div>
-           <div className='mod'>
-                   <div className='modal-inner'>
+  }
 
-                   <h2>フォロワー一覧</h2>
+  const followUser = this.state.follows.map((follow) =>
+    <div className='follow-list'>
+      <a href ={'/users/'+follow.id}>{follow.name}</a>
+      {follow.greeting}
+    </div>
+);
 
-                   <hr/>
-           {listItems}
+  let modal2;
+  if (this.state.isFollowModalOpen) {
+    modal2 = (
 
-         <button
-         className='modal-close-btn'
-         onClick={() => this.closeFollowerModal()}
-         >
-         とじる
-         </button>
-         </div>
-       </div>
-         </div>
-         );
-       }
+      <div className='mod'>
+        <div className='modal-inner'>
+          <h3>フォロー一覧</h3>
+          <hr/>
+          {followUser}
 
-       const listItems2 = this.state.follows.map((follow) =>
-       <div>
-         <div className='follow-list'>
-         <a href ={'/users/'+follow.id}>{follow.name}</a>
-        
-         {follow.greeting}
-         </div>
-         </div>
-       );
-
-       let modal2;
-          if (this.state.isFollowModalOpen) {
-            modal2 = (
-              <div>
-              <div className='mod'>
-                      <div className='modal-inner'>
-                      <h2>フォロー一覧</h2>
-              {listItems2}
-
-            <button
-            className='modal-close-btn'
-            onClick={() => this.closeFollowModal()}
-            >
-            とじる
-            </button>
-            </div>
-          </div>
-            </div>
-            );
-          }
-
-
-    const isFollowing = this.state.isFollow
-    //const followers = this.state.followers
-
-
-
-    return (
-
-      <div>
-      {this.props.viewfollowButton ?       <button className='modal-close-btn' onClick={isFollowing ? () => this.unfollow() : () => this.follow()}>
-              {isFollowing ? '解除' : 'フォロー'}
-            </button> : ''}
-<div className='follow'>
-
-<div　className='follow'>
-フォロー
-<div className='follow-count' onClick={() => {this.openFollowerModal()}}>
-{this.state.followers.length}
-</div>
-フォロワー
-<div className='follow-count' onClick={() => {this.openFollowModal()}}>
-{this.state.follows.length}
-</div>
-</div>
-</div>
-
-{modal}
-{modal2}
-</div>
+          <button
+          className='modal-close-btn'
+          onClick={() => this.closeFollowModal()}
+          >
+          とじる
+          </button>
+        </div>
+      </div>
 
     );
   }
-}
+
+  const isFollowing = this.state.isFollow
+  //const followers = this.state.followers
+  return (
+
+    <div className="follow">
+      {this.props.viewfollowButton ?  <button className="follow-button" onClick={isFollowing ? () => this.unfollow() : () => this.follow()}>
+      {isFollowing ? '解除' : 'フォロー'}
+      </button> : ''}
+
+
+      <div　className='follow-count-list'>
+        フォロワー
+        <div className='follow-count' onClick={() => {this.openFollowerModal()}}>
+          {this.state.followers.length}
+        </div>
+        フォロー
+        <div className='follow-count' onClick={() => {this.openFollowModal()}}>
+          {this.state.follows.length}
+        </div>
+
+      </div>
+      {modal}
+      {modal2}
+    </div>
+
+  );
+    }
+  }
 
 export default FollowButton

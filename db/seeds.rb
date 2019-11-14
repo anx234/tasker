@@ -7,16 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 30.times do |i|
-  user=User.create(name: "test", email: "test@example.com", password: "password", password_confirmation: "password", activated: true, activated_at: Time.zone.now)
+  user=User.create(name: "user#{i}", email: "test#{i}@example.com", password: "password", password_confirmation: "password", activated: true, activated_at: Time.zone.now, image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/avatar.jpg')))
   Task.create(name: "test", description: "説明", user_id: user.id,limit_time: Time.current)
 end
 users=User.all
 followuser=User.create!(name:  "Example User",
-             email: "test@example.com",
+             email: "ex@example.com",
              password:              "password",
              password_confirmation: "password",
              activated: true,
-             activated_at: Time.zone.now)
+             activated_at: Time.zone.now,
+             image: Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/avatar.jpg')))
 users.each do |user|
 followuser.follow(user)
 end

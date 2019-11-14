@@ -17,7 +17,6 @@ class ApplicationController < ActionController::Base
     @mytasks =  current_user.tasks
     @todayMyTasks = @mytasks.active
     @pastMyTasks = @mytasks.past
-
   end
 
 end

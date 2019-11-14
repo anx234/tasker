@@ -22,6 +22,12 @@ body{
   background-color: #EEEEEE;
 }
 
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 h5 {
   border-bottom: double 5px #FFC778;
 }
@@ -88,6 +94,7 @@ background-color: white;
 .home-header{
   background: image-url('login_background');
   height: 200px;
+  color: white;
 }
 
 .mod {
@@ -98,53 +105,62 @@ background-color: white;
   left: 0;
   background-color: rgba(0, 0, 0, 0.6);
   z-index: 2;
+  .modal-inner {
+    position: absolute;
+    top: 8%;
+    right: 0;
+    left: 0;
+    width: 480px;
+    height: 500px;
+    padding-bottom: 60px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    border-radius: 8px;
+    overflow: scroll;
+  }
+
+  .modal-header {
+
+
+  }
+
+  .modal-introduction p {
+    color: #5876a3;
+    width: 384px;
+    line-height: 32px;
+
+    margin: 36px auto 40px;
+  }
+
+  .modal-close-btn {
+
+    font-size: 13px;
+
+      height: 50px;
+    border: 0;
+    background-color: #f0f4f9;
+    position: absolute;
+       background: red;
+       color: white;
+       top: 2px;
+       right: 5px;
+       border-radius: 50%;
+
+    cursor: pointer;
+
+  }
+
+  .modal-close-btn:hover {
+    color: #8491a5;
+    background-color: #ccd9ea;
+    transition: 0.3s ease-in-out;
+  }
 
 
 }
 
-.modal-inner {
-  position: absolute;
-  top: 8%;
-  right: 0;
-  left: 0;
-  width: 480px;
-  padding-bottom: 60px;
-  margin: auto;
-  background-color: rgb(255, 255, 255);
-  border-radius: 8px;
-}
 
-.modal-header {
-  height: 8px;
-  width: 100%;
-  margin-bottom: 60px;
-  border-radius: 8px 8px 0 0;
 
-}
-
-.modal-introduction p {
-  color: #5876a3;
-  width: 384px;
-  line-height: 32px;
-
-  margin: 36px auto 40px;
-}
-
-.modal-close-btn {
-  font-size: 13px;
-    width: 100%;
-    height: 50px;
-  border: 0;
-  background-color: #f0f4f9;
-
-  cursor: pointer;
-}
-
-.modal-close-btn:hover {
-  color: #8491a5;
-  background-color: #ccd9ea;
-  transition: 0.3s ease-in-out;
-}
 
 
 .card {
@@ -152,27 +168,18 @@ background-color: white;
   flex-direction: row;
   justify-content: space-between;
 
-  margin: 10px 80px 40px 80px;
-  background-color: #DDFFFF;
+  margin: 10px 200px 40px 200px;
+
 
 }
 
 .card-title {
   margin: 0;
-
-  color: white;
-
+  color: green;
 }
 
 .card-int{
-
     height:auto;
-}
-
-.card:hover{
-    color: #000; /* 文字色を白にする */
-    background-color: #c9c9c9; /* 背景色をグレー（#c9c9c9）にする */
-    text-decoration: none; /* リンクに出てくる下線を無効にする*/
 }
 
 .card:nth-child(even) {
@@ -181,8 +188,9 @@ background-color: white;
 
 .intro-section{
   text-align: center;
-  background-color: #EEEEEE;
+  background-color: black;
   margin-top: 20px;
+  color: white;
 }
 
 .comment-search{
@@ -193,6 +201,13 @@ margin: 10px 80px 40px 80px;
 
 footer{
   background-color: green;
+  height: 40px;
+  width: 100%;
+  text-align: center;
+margin-top: auto;
+
+    a {color: white;}
+
 }
 
 
@@ -234,8 +249,30 @@ footer{
     top: 0px;
     left: 50px;
 }
+/*フォロー*/
 
-.follow{
+.follow-button {
+  position: relative;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #03A9F4;/*色*/
+  border: solid 1px #0f9ada;/*線色*/
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+  text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+}
+
+.follow-button:active {
+  /*押したとき*/
+   border: solid 1px #03A9F4;
+   box-shadow: none;
+   text-shadow: none;
+}
+
+
+.follow-count-list{
   display: flex;
   flex-direction: row;
 
@@ -260,12 +297,52 @@ color: red;
 }
 
 .follow-list{
-margin: 2px;
+margin: 10px;
+border-bottom: solid 3px #ffe000;
 }
 
 .follow-list a{
   float: left;
 
-  margin-right: 10px;
+  margin-right: 30px;
 
+}
+
+
+
+.intro-box{
+  border: 2px solid #0094D6;
+width: 400px;
+display: table;
+text-align:center;
+margin:0 auto;
+display:block;
+margin-bottom: 20px;
+}
+
+.intro-box h3{
+  background: green;
+  color: #FFF;
+  text-align: center;
+
+}
+.intro-section3 .inner{
+  padding: .5em;
+}
+
+.login-link{
+  text-align: center;
+  color: white;
+  width: 200px;
+  padding-bottom: 20px;
+  margin:0 auto;
+  display:block;
+}
+
+.explanation{
+  margin: 10px 50px 10px 50px;
+  h3{
+    color: green;
+    border-bottom: solid 3px #ffe000;
+  }
 }

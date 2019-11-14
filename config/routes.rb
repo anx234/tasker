@@ -7,8 +7,7 @@ Rails.application.routes.draw do
 put 'users/unfollow/:user_id',to: 'users#unfollow'
 get 'users/follow_list/:user_id',to: 'users#follow_list'
 get 'users/follower_list/:user_id',to:'users#follower_list'
-  root to: 'home#index'
-  resources :home
+  resources :home, only: [:index]
   resources :users
   resources :account_activations, only: [:edit]
   resources :users do

@@ -13,26 +13,19 @@
           p=@user.greeting
       hr
 
-
       -if @isMe
         = link_to '編集', edit_user_path, class: 'btn btn-primary mr-3'
         = link_to '退会', @user, method: :delete,data: { confirm: "退会します。よろしいですか？" }, class: 'btn btn-danger'
-
-
       = react_component('FollowButton',user: @user,'current_user': current_user,'isFollow': @isFollow, 'followers2': @user.followers,'follows2': @user.all_following, 'viewfollowButton': !@isMe)
-
-
-
 
       h3
         =@user.name
         |さんのタスク
       -@tasks.each do |task|
-        .border.border-primary.mt-4.mb-1.ml-2.mr-2.rounded
-          =task.name
+        .task-card.border.border-success.mt-4.mb-1.ml-2.mr-2.rounded
+          =link_to task.name, "/tasks/#{task.id}", method: :get
           hr
           =task.description
         br
-
-
       hr
+= render 'shared/footer'

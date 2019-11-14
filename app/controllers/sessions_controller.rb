@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(email: params[:session][:email])
     if user && user.authenticate(params[:session][:password])
-
       if user.activated?
       session[:user_id] = user.id
       redirect_to tasks_path, notice: 'ログインしました。'
@@ -35,4 +34,5 @@ class SessionsController < ApplicationController
   def session_params
     params.require(:session).permit(:email, :password)
   end
+
 end

@@ -1,11 +1,12 @@
 class HomeController < ApplicationController
-    skip_before_action :login_required,:mytask_get
-def index
+  skip_before_action :login_required,:mytask_get
 
-end
+  def index
 
-def new
-  redirect_to login_path
-end
+  end
+
+  def new
+    redirect_to login_path
+  end
 
 end
