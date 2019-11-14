@@ -19,6 +19,7 @@ get 'users/follower_list/:user_id',to:'users#follower_list'
   resources :tasks do
     resources :comments
   end
-
+ resources :notifications, only: :index
+ root to: 'home#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

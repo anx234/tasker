@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_12_100721) do
+ActiveRecord::Schema.define(version: 2019_11_14_172133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,6 +58,21 @@ ActiveRecord::Schema.define(version: 2019_11_12_100721) do
     t.index ["followable_type", "followable_id"], name: "index_follows_on_followable_type_and_followable_id"
     t.index ["follower_id", "follower_type"], name: "fk_follows"
     t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "task_id"
+    t.integer "comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["task_id"], name: "index_notifications_on_task_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "tasks", force: :cascade do |t|

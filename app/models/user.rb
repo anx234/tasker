@@ -15,6 +15,8 @@ class User < ApplicationRecord
       acts_as_follower   # フォロー機能
 
       validate :image_presence
+      has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+      has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
     def image_presence
       if image.attached?

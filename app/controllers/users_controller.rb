@@ -69,14 +69,7 @@ class UsersController < ApplicationController
     render :json => followData
   end
 
-  def follow_list
-    @user = User.find(params[:user_id])
-  end
-# フォローしてる人の一覧ページ
 
-  def follower_list
-    @user = User.find(params[:user_id])
-  end
 
 
   private
