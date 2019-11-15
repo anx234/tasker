@@ -1,8 +1,6 @@
 - content_for :title do
   | タスク一覧
 
-
-
 .row
   .col-2
     = render 'shared/sidebar'
@@ -10,8 +8,6 @@
   .col-8
     .container.pt-4
       h1 みんなのタスク
-      =Date.today
-
 
       h4
         | タスク検索
@@ -29,9 +25,12 @@
           = f.label :limit_time_gteq, '期限日', class: 'col-sm-2 col-form-label'
           .col-sm-10
             = f.search_field :limit_time_gteq, class: 'form-control'
+        form-group.row
+          = f.label :category_id_eq, 'カテゴリー', class: 'col-sm-2 col-form-label'
+          .col-sm-10
+            = f.collection_select :category_id_eq, Category.all, :id, :name, selected: nil
         .form-group
           = f.submit class: 'btn btn-outline-primary'
-
 
 
       h4
@@ -51,7 +50,7 @@
               td= link_to task.name, "/tasks/#{task.id}", method: :get
               td= task.created_at.strftime('%Y年%m月%d日 %H:%M')
               td= task.limit_time.try(:strftime,"%Y年%m月%d日")
-            
+              td= task.category.name
                 = link_to '詳細', "/tasks/#{task.id}", method: :get, class: 'btn btn-primary mr-3'
         = paginate @tasks
 = render 'shared/footer'

@@ -3,7 +3,8 @@ require 'rails_helper'
 describe 'タスク管理機能', type: :system do
   let(:user_a) { FactoryBot.create(:user, name: 'ユーザーA', email: 'a@example.com') }
   let(:user_b) { FactoryBot.create(:user, name: 'ユーザーB', email: 'b@example.com') }
-  let!(:task_a) { FactoryBot.create(:task, name: '最初のタスク', user: user_a) }
+  let!(:category1) { FactoryBot.create(:category, name: 'テスト') }
+  let!(:task_a) { FactoryBot.create(:task, name: '最初のタスク', user: user_a, category: category1) }
   let!(:comment_a) { FactoryBot.create(:comment, content: '最初のコメント', task: task_a, user: user_a) }
   before do
     visit login_path
@@ -56,7 +57,7 @@ describe 'タスク管理機能', type: :system do
 
     context '新規作成画面で名称を入力したとき' do
       it '正常に登録される' do
-        expect(page).to have_selector '.alert-success', text: '新規作成のテストを書く'
+        expect(page).to have_content '登録しました'
       end
     end
 

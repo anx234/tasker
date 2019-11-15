@@ -5,7 +5,7 @@ class Task < ApplicationRecord
     scope :active, -> { where(limit_time: Date.today) }
     scope :past, -> {where("limit_time < ?", 1.day.ago)}
     has_many :notifications, dependent: :destroy
-
+    belongs_to :category
     def create_notification_comment!(current_user, comment_id)
         save_notification_comment!(current_user, comment_id, user_id)
       end

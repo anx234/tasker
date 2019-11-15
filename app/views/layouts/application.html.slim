@@ -24,7 +24,7 @@ html
           - if current_user
             li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
             li.nav-item= link_to 'マイページ', "/users/#{@current_user.id}", class: 'nav-link'
-            li.nav-item.mt-2= render 'shared/circle', class: 'nav-link'
+            li.nav-item.mt-2.mr-2.ml-2= render 'shared/circle', class: 'nav-link'
 
     .container
       - flash.each do |message_type, message|

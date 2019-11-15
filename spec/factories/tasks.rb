@@ -3,5 +3,6 @@ FactoryBot.define do
     name { 'テストを書く' }
     description { 'RSpec＆Capybara＆FactoryBotを準備する' }
     user
+    category 
   end
 end
