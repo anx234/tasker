@@ -1,24 +1,35 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要
 
-Things you may want to cover:
+TaskShareは日々のタスクを管理、共有できるSNSです。
+## このアプリは新規登録にメール認証を用いています。面倒な場合は以下ユーザーでログインしてください。
+メールアドレス：test1@example.com
+パスワード：　password
 
-* Ruby version
+## 何ができるのか？（機能）
 
-* System dependencies
+TaskShare(https://task-share-ak.herokuapp.com)は、以下のことができます。
+- タスクを追加/編集/削除
+- タスクの検索
+- 自身のタスク数/期限が迫ったタスク数/期限が切れたタスク数を表示
+- タスクにコメントする
+- タスクにコメントがあった場合アプリ内で通知
+- ユーザーのフォロー/アンフォロー機能
 
-* Configuration
 
-* Database creation
+## どうやってできているのか？（技術）
 
-* Database initialization
+TaskShare(https://task-share-ak.herokuapp.com)は、以下のことができます。
 
-* How to run the test suite
+- Rails
+- Heroku
+- React
+- AWS S3（プロフィール画像置き場）
 
-* Services (job queues, cache servers, search engines, etc.)
+テストRspec
 
-* Deployment instructions
+## 特徴・工夫
 
-* ...
+ReactによるSPA
+- フォロー/解除にajaxを使用
+- フォロワー・フォロー一覧をモーダルで表示
