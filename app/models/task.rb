@@ -7,14 +7,10 @@ class Task < ApplicationRecord
     has_many :notifications, dependent: :destroy
 
     def create_notification_comment!(current_user, comment_id)
-        # 自分以外にコメントしている人をすべて取得し、全員に通知を送る
-
-        # まだ誰もコメントしていない場合は、投稿者に通知を送る
         save_notification_comment!(current_user, comment_id, user_id)
       end
 
       def save_notification_comment!(current_user, comment_id, visited_id)
-        # コメントは複数回することが考えられるため、１つの投稿に複数回通知する
         notification = current_user.active_notifications.new(
           task_id: id,
           comment_id: comment_id,

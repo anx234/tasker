@@ -17,6 +17,9 @@
           = f.label :description, '説明'
           = f.text_area :description, class: 'form-control'
         .form-group
+          = f.label :description, 'カテゴリー'
+          = f.collection_select :category_id, Category.all, :id, :name 
+        .form-group
           = f.label :limit_time, '期限日'
           = f.date_select :limit_time, {}, class: 'form-control form-control-inline'
         = f.submit '登録する', class: 'btn btn-primary mb-3'

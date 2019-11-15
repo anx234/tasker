@@ -21,11 +21,19 @@
       h3
         =@user.name
         |さんのタスク
-      -@tasks.each do |task|
-        .task-card.border.border-success.mt-4.mb-1.ml-2.mr-2.rounded
-          =link_to task.name, "/tasks/#{task.id}", method: :get
-          hr
-          =task.description
+      - if @tasks.exists?
+        -@tasks.each do |task|
+          .task-card.border.mt-4.mb-1.ml-2.mr-2.rounded
+            =link_to task.name, "/tasks/#{task.id}", method: :get
+            hr
+            =task.description
+          br
+        hr
         br
-      hr
+      - else
+        p
+          | タスクはありません
+        hr
+        br
+
 = render 'shared/footer'

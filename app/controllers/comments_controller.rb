@@ -2,14 +2,13 @@ class CommentsController < ApplicationController
 
   def create
     puts params[:comment][:content]
-    #task = Task.find(params[:task_id])
     puts params[:task_id]
-    #  @comment = Comment.new(content: params[:comment][:content],user_id: 1,task_id: 1)
+
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
-#@comment.task_id = params[:task_id]
     if @comment.save!
       puts "成功"
+      #通知
        @comment.task.create_notification_comment!(current_user, @comment.id)
       redirect_back(fallback_location: root_path)
     else

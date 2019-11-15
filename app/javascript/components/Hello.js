@@ -1,22 +1,11 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Lesson from './Lesson'
+
 class Hello extends React.Component {
 
   render () {
-    const lessonList = [
-          {
-            name: 'タスク管理',
-            image: '/images/card1.jpg',
-            introduction: 'WEBページはHTML、CSSという言語によってその見た目が作られています。 実際にWEBページを作りながら学んでみましょう！',
-          },
-          {
-            name: 'タスク共有',
-            image: '/images/card2.jpg',
-            introduction: 'SassはCSSをより便利に効率的にするための言語です。',
-          },
 
-        ];
 
     return (
 
@@ -31,40 +20,71 @@ class Hello extends React.Component {
             <p>タスクを共有できるサービスです。</p>
           </section>
 
-          {lessonList.map((lessonItem) => {
-            return (
-              <Lesson
-              name={lessonItem.name}
-              image={lessonItem.image}
-              introduction={lessonItem.introduction}
-              />
-            );
-          })}
-          <section className="intro-main">
-            <div className="explanation">
-              <h3>課題解決に特化したSNS</h3>
-              <p>日課や学校の宿題,会社の仕事のことなど、Task Shareで公開しましょう。他のユーザーはコメントで課題に協力できます。
-              協力しフォローしてもらい、自分の課題にも協力してもらいましょう</p>
-            </div>
-            <div className="intro-box">
-              <h3>宿題や課題などを公開しましょう</h3>
-              <div className="intro-box__inner">
-              公開し他の利用者と協力して解決しましょう！
-              課題には期限が設定できます。期限内に解決できるよう頑張りましょう。
-              </div>
-            </div>
-
-            <div className="intro-box">
-              <h3>自分以外の課題に参加しましょう</h3>
-              <div className="intro-box__inner">
-              コメントで他の利用者の課題解決に協力しましょう。
-              フォロワーを増やして、多くの人に協力してもらいましょう
-              </div>
-            </div>
-          </section>
-          <div className="login-link">
-            <a href ="/users/new">新規登録はこちら</a>
+          <div className="explanation">
+            <h3>課題解決に特化したSNS</h3>
+            <p>日課や学校の宿題など様々なタスクを、Task Shareで公開しましょう。他のユーザーはコメントで課題に協力できます。
+            多くのユーザーと繋がり、多くのタスクを完了していきましょう。</p>
           </div>
+          <div className="task-list">
+    <div className="task-list__content">
+    <h3>タスク管理</h3>
+    <hr/>
+    <p>タスクを登録しましょう。タスクには期限やカテゴリーなど設定できます。</p>
+    </div>
+    <div className="task-list__content">
+    <h3>タスク共有</h3>
+    <hr/>
+    <p>登録したタスクは他のユーザーに公開されます。他のユーザーと協力してタスクを完了させましょう</p>
+    </div>
+    <div className="task-list__content">
+    <h3>フォロー機能</h3>
+    <hr/>
+    <p>他のユーザーのタスクに参加し、フォロワーを増やしていきましょう。多くのフォロワーに協力してもらえれば早くタスクを解決できます。</p>
+    </div>
+    <div className="task-list__content">
+    <h3>コメント通知機能</h3>
+    <hr/>
+    <p>他のユーザーがあなたのタスクにコメントすると、通知を受け取れます。</p>
+    </div>
+
+  </div>
+
+
+
+<section className="second-section">
+        <h2 className="second-title">こんなシーンで役に立ちます。</h2>
+        　<div className="second-colum">
+        　<div className="second-colum__content">
+        　<i className="fas fa-chalkboard-teacher fa-3x"></i>
+        	<h4>学校や仕事</h4>
+
+
+        　</div>
+        　<div className="second-colum__content">
+        　<i className="far fa-clock fa-3x"></i>
+        	<h4>日常生活</h4>
+
+
+        　 </div>
+        <div className="second-colum__content">
+        　<i className="far fa-clock fa-3x"></i>
+        	<h4>遊び</h4>
+
+
+        　 </div>
+        </div>
+</section>
+
+        <div className="third-colum">
+  <i className="far fa-envelope fa-5x"></i>
+
+     <div className="login-link">
+       <a href ="/users/new">新規登録はこちら</a>
+     </div>
+
+</div>
+
+
         </main>
       </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_172133) do
+ActiveRecord::Schema.define(version: 2019_11_14_204528) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,17 @@ ActiveRecord::Schema.define(version: 2019_11_14_172133) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_article_models", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -82,6 +93,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_172133) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.date "limit_time"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_tasks_on_category_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -100,5 +113,6 @@ ActiveRecord::Schema.define(version: 2019_11_14_172133) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
+  add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
 end

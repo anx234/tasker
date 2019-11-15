@@ -3,13 +3,14 @@ class TasksController < ApplicationController
   def index
     @todayTasks = Task.active
     @q = Task.all.ransack(params[:q])
-    @tasks = @q.result(distinct: true).page(params[:page])
+    @tasks = @q.result(distinct: true).page(params[:page]).per(10).order(created_at: :desc)
   end
 
   def show
     @task = Task.find(params[:id])
     @comments = @task.comments
     @comment = Comment.new
+    @category=Category.find(@task.category_id)
   end
 
   def new
@@ -45,7 +46,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-  params.require(:task).permit(:name, :description, :limit_time)
+  params.require(:task).permit(:name, :description, :limit_time, :category_id)
   end
 
 end

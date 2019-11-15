@@ -11,7 +11,7 @@
     .container.pt-4
       h1 みんなのタスク
       =Date.today
-      
+
 
       h4
         | タスク検索
@@ -42,14 +42,16 @@
         thead.thead-default
           tr
             th= Task.human_attribute_name(:name)
-            th= Task.human_attribute_name(:created_at)
-            th= Task.human_attribute_name(:limit_time)
+            th= sort_link(@q, :created_at, Task.human_attribute_name(:created_at))
+            th= sort_link(@q, :limit_time, Task.human_attribute_name(:limit_time))
+            th= Task.human_attribute_name(:category_id)
         tbody
           - @tasks.each do |task|
             tr
               td= link_to task.name, "/tasks/#{task.id}", method: :get
               td= task.created_at.strftime('%Y年%m月%d日 %H:%M')
               td= task.limit_time.try(:strftime,"%Y年%m月%d日")
+            
                 = link_to '詳細', "/tasks/#{task.id}", method: :get, class: 'btn btn-primary mr-3'
         = paginate @tasks
 = render 'shared/footer'

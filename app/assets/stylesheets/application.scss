@@ -37,10 +37,19 @@ h4 {
 
 }
 
+footer{
+
+  height: 40px;
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+    a {color: white;}
+
+}
+
 .bg {
   background: image-url('login_background');
   background-size: cover;
-
 }
 
 #error_explanation{
@@ -48,9 +57,10 @@ h4 {
 }
 
 .login-form{
+  width: 500px;
   padding-top: 50px;
   height: 600px;
-  margin-left: 40px;
+  margin-left: auto;
   margin-right: 40px;
 }
 
@@ -93,8 +103,10 @@ background-color: white;
 
 .home-header{
   background: image-url('login_background');
-  height: 200px;
+  height: 600px;
   color: white;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .mod {
@@ -159,10 +171,6 @@ background-color: white;
 
 }
 
-
-
-
-
 .card {
   display:flex;
   flex-direction: row;
@@ -194,23 +202,9 @@ background-color: white;
 }
 
 .comment-search{
-
-margin: 10px 80px 40px 80px;
-
-}
-
-footer{
-  background-color: green;
-  height: 40px;
-  width: 100%;
-  text-align: center;
-margin-top: auto;
-
-    a {color: white;}
+  margin: 10px 80px 40px 80px;
 
 }
-
-
 
 /*ツールチップ*/
 
@@ -224,30 +218,30 @@ margin-top: auto;
     padding:0;
 }
 .description2 {
-    display: none;
-    position: absolute;
-    padding: 10px;
-    font-size: 12px;
-    line-height: 1.6em;
-    color: #fff;
-    border-radius: 5px;
-    background: #000;
-    width: 100px;
+  display: none;
+  position: absolute;
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.6em;
+  color: #fff;
+  border-radius: 5px;
+  background: #000;
+  width: 100px;
 }
 .description2:before {
-    content: "";
-    position: absolute;
-    top: 0%;
-    right: 95%;
-    border: 15px solid transparent;
-    border-top: 15px solid #000;
-    margin-left: -15px;
-    transform: rotateZ(90deg);
+  content: "";
+  position: absolute;
+  top: 0%;
+  right: 95%;
+  border: 15px solid transparent;
+  border-top: 15px solid #000;
+  margin-left: -15px;
+  transform: rotateZ(90deg);
 }
 .tooltip2:hover .description2{
-    display: inline-block;
-    top: 0px;
-    left: 50px;
+  display: inline-block;
+  top: 0px;
+  left: 50px;
 }
 /*フォロー*/
 
@@ -303,21 +297,21 @@ border-bottom: solid 3px #ffe000;
 
 .follow-list a{
   float: left;
-
   margin-right: 30px;
 
 }
 
-
+.intro-main{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap-reverse;
+  width: 90%;
+  min-width: 500px;
+  border:1px dotted #FF00FF;
+}
 
 .intro-box{
   border: 2px solid #0094D6;
-width: 400px;
-display: table;
-text-align:center;
-margin:0 auto;
-display:block;
-margin-bottom: 20px;
 }
 
 .intro-box h3{
@@ -340,9 +334,57 @@ margin-bottom: 20px;
 }
 
 .explanation{
-  margin: 10px 50px 10px 50px;
+  margin: 50px 50px 10px 50px;
   h3{
     color: green;
     border-bottom: solid 3px #ffe000;
+  }
+}
+
+.second-section{
+  text-align: center;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.second-colum{
+  display: flex;
+  justify-content: center;
+
+  &__content{
+    text-align: center;
+    margin: 20px;
+    width: 350px;
+  }
+
+  p{
+    margin-top: 100px;
+  }
+}
+
+.third-colum{
+  text-align: center;
+  width: 100%;
+  color: white;
+  background-color: black;
+}
+
+.task-list{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.task-list__content{
+  width: 400px;
+  height: 150px;
+  margin: 20px;
+}
+@media only screen and (min-width: 768px), print {
+  .task-list div{
+    margin-right: 20px;
+  }
+  .task-list div:nth-child(2n){
+    margin-right: 0;
   }
 }

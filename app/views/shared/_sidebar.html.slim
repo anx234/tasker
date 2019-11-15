@@ -1,6 +1,5 @@
 .sidebar
   h4　マイタスク
-  = render 'shared/circle'
   .container
     .sidebar-content.mb-3
       h5 あなたのタスク数
@@ -8,18 +7,18 @@
         = icon 'far', 'smile'
         .description2
           | コツコツ頑張ろう
-        =" #{@mytasks.count}"
+        =link_to " #{@mytasks.count}", "/users/#{@current_user.id}"
     .sidebar-content.mb-3
       h5 本日までのタスク数
       .tooltip2.mr-2
         = icon 'far', 'grin-beam-sweat'
         .description2
           | 今日中にタスクを完了しよう
-        =" #{@todayMyTasks.count}"
+        =link_to " #{@todayMyTasks.count}", "/users/#{@current_user.id}"
     .sidebar-content.mb-3
       h5 期限切れのタスク数
       .tooltip2.mr-2
         = icon 'far', 'dizzy'
         .description2
           | 早く終わらせるか、期限の再設定をしましょう
-        =" #{@pastMyTasks.count}"
+        =link_to " #{@pastMyTasks.count}", "/users/#{@current_user.id}"

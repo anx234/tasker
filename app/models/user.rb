@@ -10,7 +10,6 @@ class User < ApplicationRecord
       before_create :create_activation_digest
       has_one_attached :image
 
-
       acts_as_followable # フォロワー機能
       acts_as_follower   # フォロー機能
 

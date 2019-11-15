@@ -9,16 +9,22 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag    'application'
   body
-    ul.nav.bg-success
-      - if current_user
-        li= link_to '投稿', new_task_path, class: 'nav-link'
-        li= link_to '投稿一覧', tasks_path, class: 'nav-link'
-        li= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
-        li= link_to 'プロフィール', "/users/#{@current_user.id}", class: 'nav-link'
-      - else
-        li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
-        li.nav-item= link_to '新規登録', new_user_path, class: 'nav-link'
 
+    nav.navbar.navbar-expand-sm.navbar-dark.bg-dark
+      ul.navbar-nav
+        - if current_user
+          li.nav-item= link_to 'タスク追加', new_task_path, class: 'nav-link'
+          li.nav-item= link_to 'タスク一覧', tasks_path, class: 'nav-link'
+        - else
+          li.nav-item= link_to 'ログイン', login_path, class: 'nav-link'
+          li.nav-item= link_to '新規登録', new_user_path, class: 'nav-link'
+          li.nav-item= link_to 'TaskShareとは', home_index_path, class: 'nav-link'
+      .collapse.navbar-collapse.justify-content-end
+        ul.navbar-nav
+          - if current_user
+            li.nav-item= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link'
+            li.nav-item= link_to 'マイページ', "/users/#{@current_user.id}", class: 'nav-link'
+            li.nav-item.mt-2= render 'shared/circle', class: 'nav-link'
 
     .container
       - flash.each do |message_type, message|

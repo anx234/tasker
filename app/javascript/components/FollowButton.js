@@ -1,4 +1,5 @@
 import React from "react"
+import FollowFollower from './FollowFollower';
 import PropTypes from "prop-types"
 
 class FollowButton extends React.Component {
@@ -40,9 +41,6 @@ class FollowButton extends React.Component {
       this.setState({isFollow: followData.isFollow});
       this.setState({followers: followData.followers});
       this.setState({follows: followData.follows});
-        //this.setState({isFollow: true});
-        console.log(followData);
-        console.log(followers);
     }.bind(this))
   }
 
@@ -59,18 +57,13 @@ class FollowButton extends React.Component {
           this.setState({isFollow: followData.isFollow});
           this.setState({followers: followData.followers});
           this.setState({follows: followData.follows});
-          console.log(followData);
-          console.log(followers);
       }.bind(this))
   }
 
   render () {
 
     const followerUser = this.state.followers.map((follower) =>
-      <div className='follow-list'>
-        <a href ={'/users/'+follower.id}>{follower.name}</a>
-        {follower.greeting}
-      </div>
+    <FollowFollower name={follower.name} id={follower.id} greeting={follower.greeting} key={follower.id}/>
   );
 
   let modal;
@@ -94,10 +87,8 @@ class FollowButton extends React.Component {
   }
 
   const followUser = this.state.follows.map((follow) =>
-    <div className='follow-list'>
-      <a href ={'/users/'+follow.id}>{follow.name}</a>
-      {follow.greeting}
-    </div>
+
+  <FollowFollower name={follow.name} id={follow.id} greeting={follow.greeting} key={follow.id}/>
 );
 
   let modal2;
