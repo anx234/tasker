@@ -396,3 +396,20 @@ border-bottom: solid 3px #ffe000;
     margin-right: 0;
   }
 }
+
+
+.task-data-form{
+  display: inline-block;
+  width: auto;
+}
+/*アバター*/
+#avatar_img_prev{
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.avatar{
+   border-radius: 50%;
+   margin: 10px 0px 0px 30px;
+}

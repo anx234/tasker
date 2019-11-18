@@ -18,9 +18,9 @@
           = f.text_area :description, class: 'form-control'
         .form-group
           = f.label :description, 'カテゴリー'
-          = f.collection_select :category_id, Category.all, :id, :name 
+          = f.collection_select :category_id, Category.all, :id, :name, class: 'form-control'
         .form-group
           = f.label :limit_time, '期限日'
-          = f.date_select :limit_time, {}, class: 'form-control form-control-inline'
+          = f.date_select :limit_time, {use_month_numbers: true}, class: 'form-control　task-data-form'
         = f.submit '登録する', class: 'btn btn-primary mb-3'
 = render 'shared/footer'

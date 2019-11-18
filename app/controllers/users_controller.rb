@@ -17,7 +17,6 @@ class UsersController < ApplicationController
     @isMe = @user.id==current_user.id
 
     puts @user.followers.count
-    puts "ふぉろ"
     puts @user.all_following.count
   end
 

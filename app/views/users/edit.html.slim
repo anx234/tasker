@@ -3,17 +3,14 @@
     ul#error_explanation
       - @user.errors.full_messages.each do |message|
         li= message
-
+  = image_tag @user.image.variant(combine_options:{resize:"240x240^",crop:"240x240+0+0",gravity: :center}).processed,id: :avatar_img_prev, class: 'avatar'
   = form_for(@user) do |f|
     .form-group
       = f.label :name, 'お名前'
       = f.text_field :name, class: 'form-control'
     .form-group
-      = f.label :email, 'メールアドレス'
-      = f.email_field :email, class: 'form-control'
-    .form-group
       = f.label :image, 'プロフィール画像'
-      = f.file_field :image
+      = f.file_field :image, id: :post_img
     .form-group
       = f.label :greeting, 'あいさつ'
       = f.text_field :greeting, class: 'form-control'
