@@ -46,11 +46,12 @@
             th= Task.human_attribute_name(:category_id)
         tbody
           - @tasks.each do |task|
-            tr
-              td= link_to task.name, "/tasks/#{task.id}", method: :get
-              td= task.created_at.strftime('%Y年%m月%d日 %H:%M')
-              td= task.limit_time.try(:strftime,"%Y年%m月%d日")
-              td= task.category.name
-                = link_to '詳細', "/tasks/#{task.id}", method: :get, class: 'btn btn-primary mr-3'
+            - if task.running?
+              tr
+                td= link_to task.name, "/tasks/#{task.id}", method: :get
+                td= task.created_at.strftime('%Y年%m月%d日 %H:%M')
+                td= task.limit_time.try(:strftime,"%Y年%m月%d日")
+                td= task.category.name
+                  = link_to '詳細', "/tasks/#{task.id}", method: :get, class: 'btn btn-primary mr-3'
         = paginate @tasks
 = render 'shared/footer'

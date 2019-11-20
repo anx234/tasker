@@ -16,6 +16,12 @@ get 'users/follower_list/:user_id',to:'users#follower_list'
     get :follow_list, on: :member
     get :unfollow_list, on: :member
   end
+
+  resources :tasks do
+    post :run, on: :member
+    post :finish, on: :member
+  end
+
   resources :tasks do
     resources :comments
   end

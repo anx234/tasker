@@ -23,7 +23,7 @@
         |さんのタスク
       - if @tasks.exists?
         -@tasks.each do |task|
-          .task-card.border.mt-4.mb-1.ml-2.mr-2.rounded
+          .task-card.border.mt-4.mb-1.ml-2.mr-2.rounded.border-info
             =link_to task.name, "/tasks/#{task.id}", method: :get
             hr
             =task.description

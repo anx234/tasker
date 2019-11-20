@@ -1,4 +1,19 @@
 class Task < ApplicationRecord
+    include AASM
+
+    aasm do
+     state :running, :initial => true
+     state :done
+
+     event :run do
+       transitions :from => :done, :to => :running
+     end
+
+     event :finish do
+       transitions :from => :running, :to => :done
+     end
+    end
+
     has_many :comments, dependent: :destroy
     belongs_to :user
     validates :name, presence: true, length: { maximum: 30 }
