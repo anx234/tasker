@@ -14,7 +14,7 @@
           col-6.ml-3
             -if current_user.id==@task.user.id
               - if @task.running?
-                = button_to "完了", {controller: 'tasks', action: 'finish'}, {:method => :post, :data => {:confirm => "完了状態にするとタスク一覧画面位表示されなくなります"}, class: "btn btn-info"}
+                = button_to "完了", {controller: 'tasks', action: 'finish'}, {method: :post, class: "btn btn-info"}
               - if @task.done?
                 = button_to "アクティブ", {controller: 'tasks', action: 'run'}, {method: :post, class: "btn btn-info"}
         .task-info.border.mt-4.mb-4.ml-2.mr-2.rounded

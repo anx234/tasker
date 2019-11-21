@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to @user, notice: "タスク「#{@user.name}」を更新しました。"
+      redirect_to @user
     else
       render :edit
     end
@@ -36,16 +36,12 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.image.attach(io: File.open("public/images/avatar.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
-    if @user.save # => Validation
-      # Sucess
-      flash[:success] = "Welcome to the Sample App!"
+    if @user.save
       UserMailer.account_activation(@user).deliver_now
       flash[:info] = "Please check your email to activate your account."
       redirect_to root_url
-      # redirect_to  login_path,notice:'redirectに成功しました'
-      # GET "/users/#{@user.id}" => show
     else
-      # Failure
+
       render 'new'
     end
   end
@@ -54,10 +50,9 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     current_user.follow(@user)
     @isFollow = current_user.following? @user
-    # render json: @isFollow
     followData = {isFollow: @isFollow, followers: @user.followers, follows: @user.all_following}
     render :json => followData
-    # redirect_to user_path(@user)
+
   end
 
   def unfollow

@@ -57,8 +57,7 @@ class TasksController < ApplicationController
     puts @task.aasm_state
     @task.save
     puts @task.running?
-    redirect_to task_url
-
+    redirect_to task_url, notice: "タスク「#{@task.name}」を完了状態にしました。タスク一覧には表示されません。"
   end
 
   private

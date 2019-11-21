@@ -7,12 +7,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     @comment.user_id = current_user.id
     if @comment.save!
-      puts "成功"
       #通知
        @comment.task.create_notification_comment!(current_user, @comment.id)
       redirect_back(fallback_location: root_path)
     else
-      puts "失敗"
       redirect_back(fallback_location: root_path)
     end
   end

@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       end
     else
      # Failure
-     flash.now[:danger] = 'Invalid email/password combination'
+     flash.now[:danger] = 'メールかパスワードが異なります'
      render 'new'
     end
   end

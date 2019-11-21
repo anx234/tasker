@@ -39,11 +39,6 @@ class User < ApplicationRecord
        BCrypt::Password.create(string, cost: cost)
       end
 
-      def create_activation_digest
-          self.activation_token  = User.new_token
-          self.activation_digest = User.digest(activation_token)
-      end
-
       def authenticated?(attribute, token)
         digest = send("#{attribute}_digest")
         return false if digest.nil?
@@ -55,8 +50,12 @@ class User < ApplicationRecord
       update_attribute(:activated_at, Time.zone.now)
       end
 
-      # 引数のハッシュ値を返す
-
+      private
+      
+        def create_activation_digest
+            self.activation_token  = User.new_token
+            self.activation_digest = User.digest(activation_token)
+        end
 
 
 end
