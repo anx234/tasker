@@ -16,6 +16,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require trix
 
 $( document ).on('turbolinks:load', function() {
   function readURL(input) {

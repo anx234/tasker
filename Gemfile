@@ -78,5 +78,6 @@ gem 'react-rails'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 gem "jquery-rails"
 gem 'aasm'
+gem 'trix'
 
 gem "aws-sdk-s3", require: false #追記
