@@ -40,36 +40,85 @@ h4 {
 
 footer{
 
-  height: 40px;
+
+  height: 100px;
   width: 100%;
   text-align: center;
   margin-top: auto;
-    a {color: white;}
+    a {color: white;
+      line-height: 150px;}
 
 }
 
-.bg {
-  background: image-url('login_background');
-  background-size: cover;
-  width: 100%;
-  height: 800px;
+.login {
+  position: relative;
+  .login-title{
+    height: 200px;
+    background-color: black;
+    padding: 50px;
+    text-align: center;
+    color: white;
+
+  }
 }
+
 
 #error_explanation{
   color: red;
 }
 
 .login-form{
-  width: 500px;
-  padding-top: 50px;
-  margin-left: auto;
-  margin-right: 40px;
+
+  position: absolute;
+  top: 200px;
+  right: 100px;
+  background-color: rgba(255,255,225,0.5);
+  padding: 10px;
+  margin-top: 50px;
+  width: 80%;
 }
 
-.login-form-content{
-  padding: 20px;
-  background: rgba(0,0,0,0.3);
-  color: white;
+@media screen and (min-width:781px){
+  .login-form{
+
+      width: 80%;
+  }
+
+
+  input[type="text"] {
+
+          height: 40px;
+          margin-bottom: 50px;
+      }
+
+  input[type="password"] {
+
+          height: 40px;
+          margin-bottom: 50px;
+      }
+
+  input[type="submit"] {
+
+          height: 40px;
+          margin-bottom: 20px;
+      }
+
+}
+
+
+
+
+.login img{
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (min-width:781px){
+
+  .login-form-img img{
+    width: 100%;
+
+  }
 }
 
 /*サイドバー*/
